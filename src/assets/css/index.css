@@ -1,0 +1,278 @@
+:root {
+    font-size: 16px;
+}
+
+/*
+|------------------------------------------------------------
+| Fonts
+|------------------------------------------------------------
+*/
+
+* {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+}
+
+a {
+    text-decoration: none;
+    color: ;
+}
+
+a:hover {
+    color: ;
+}
+
+img {
+    font-style: italic;
+}
+
+/*
+|------------------------------------------------------------
+| Universal reset
+|------------------------------------------------------------
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/*
+|------------------------------------------------------------
+| Customized CSS remedy
+|------------------------------------------------------------
+*/
+
+::before, ::after {
+    box-sizing: border-box;
+}
+
+button {
+    outline: none;
+}
+
+html {
+    line-sizing: normal;
+}
+
+[hidden] {
+    display: none;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1.00rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    font-weight: 600;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+hr {
+    border-style: solid;
+    border-width: 1px 0 0;
+    color: inherit;
+    height: 0;
+    overflow: visible;
+}
+
+img, svg, video, canvas,
+audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+audio:not([controls]) {
+    display: none;
+}
+
+picture {
+    display: contents;
+}
+
+source {
+    display: none;
+}
+
+img, svg,
+video, canvas {
+    height: auto;
+}
+
+audio {
+    width: 100%;
+}
+
+img {
+    border-style: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+svg {
+    overflow: hidden;
+}
+
+article, aside, details,
+figcaption, figure, footer,
+header, hgroup, main, nav, section {
+    display: block;
+}
+
+[type='checkbox'],
+[type='radio'] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/*
+|------------------------------------------------------------
+| Scrollbars
+|------------------------------------------------------------
+*/
+
+body::-webkit-scrollbar,
+select::-webkit-scrollbar, { }
+
+body::-webkit-scrollbar-track { }
+
+body::-webkit-scrollbar-thumb { }
+
+select::-webkit-scrollbar-track { }
+
+select::-webkit-scrollbar-thumb { }
+
+/*
+|------------------------------------------------------------
+| Utilities
+|------------------------------------------------------------
+*/
+
+.fill-height {
+    height: 100%;
+}
+
+.flex-r {
+    display: flex;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+}
+
+.f-al-cent {
+    align-items: center;
+}
+
+.f-al-st {
+    align-items: flex-start;
+}
+
+.f-just-bet {
+    justify-content: space-between;
+}
+
+.f-just-cent {
+    justify-content: center;
+}
+
+.f-just-eve {
+    justify-content: space-evenly;
+}
+
+.fillable {
+    outline: none;
+    font-size: 1rem;
+    padding: .4rem .6rem;
+    background-color: ;
+    border: ;
+    box-shadow: inset 0px 0px 2px 1px;
+    color: ;
+    margin-bottom: ;
+}
+
+.fillable:-webkit-autofill {
+    outline: none !important;
+    font-size: 1rem !important;
+    padding: .4rem .6rem !important;
+    background-color: !important;
+    border: !important;
+    box-shadow: inset 0px 0px 2px 1px !important;
+    color: !important;
+    margin-bottom: !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.fillable:hover,
+.fillable:focus,
+.fillable:-webkit-autofill:hover,
+.fillable:-webkit-autofill:focus,
+.fillable:-webkit-autofill:active {
+    background-color: ;
+}
+
+.fillable:-webkit-autofill:hover,
+.fillable:-webkit-autofill:focus,
+.fillable:-webkit-autofill:active {
+    background-color: !important;
+}
+
+.btn {
+    cursor: pointer;
+    outline: none;
+}
+
+/*
+|------------------------------------------------------------
+| Body
+|------------------------------------------------------------
+*/
+
+body {
+    min-height: 100vh;
+    height: 100svh;
+    background-image: url('../imgs/bg.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*
+|------------------------------------------------------------
+| Header
+|------------------------------------------------------------
+*/

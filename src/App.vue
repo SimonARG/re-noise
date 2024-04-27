@@ -1,5 +1,5 @@
 <template>
-    <AppBody />
+  <AppBody />
 </template>
 
 <script setup>

@@ -23,6 +23,7 @@ const props = defineProps({
   activeAudio: [String, null]
 })
 
+// Compare active audio prop with audio in loop to highlight the active audio
 const isActive = (audio) => {
   if (audio === props.activeAudio) {
     return true
@@ -67,6 +68,7 @@ const isActive = (audio) => {
 .audio-switcher ul::-webkit-scrollbar {
   background-color: transparent;
   width: 0.95rem;
+  border-left: 1px solid rgb(78, 78, 78);
 }
 
 .audio-switcher ul::-webkit-scrollbar-track {
@@ -95,11 +97,15 @@ const isActive = (audio) => {
 }
 
 .audio-switcher ul li.active {
-  background-color: rgb(42, 42, 42);
+  background-color: var(--switcher-list-bg);
 }
 
 .audio-switcher ul li:hover {
-  background-color: rgb(42, 42, 42);
+  background-color: var(--switcher-list-bg);
+}
+
+.audio-switcher ul li:active {
+  background-color: rgb(58, 58, 58);
 }
 
 .audio-icon {

@@ -1,7 +1,7 @@
 <template>
   <div class="master-container h-fit w-fit">
     <div class="master-panel h-fit w-fit flex-r f-al-cent">
-      <h3>MASTER</h3>
+      <h3 :class="{ inactive: !status }">MASTER</h3>
 
       <button
         @click="playPause"
@@ -15,11 +15,12 @@
 
       <div class="vol-container">
         <input
-          v-model="vol"
-          @input="changeVol"
+          v-model="masterValue"
           class="vol-slider"
           :class="{ thumbinactive: !status }"
           type="range"
+          min="0"
+          max="100"
         />
       </div>
     </div>
@@ -27,49 +28,48 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
-import { playersState } from '../../helpers/eventBus.js'
+import { statusStore } from '../../stores/statusStore.js'
+import { playbackStore } from '../../stores/playbackStore.js'
+import { volumeStore } from '../../stores/volumeStore.js'
 
-// Computed property to track if any player is "on"
-const status = computed(() => playersState.isAnyPlayerOn)
+// Fetch players status from status store
+const status = computed(() => statusStore.isAnyPlayerOn)
+const playing = ref(playbackStore.isAnyPlayerPlaying)
 
-const playing = ref(false)
-
-const playPauseIcon = ref('play_arrow')
-const playPauseClass = ref('playIcon')
+const playPauseIcon = computed(() => (playing.value ? 'pause' : 'play_arrow'))
+const playPauseClass = computed(() => (playing.value ? 'pauseIcon' : 'playIcon'))
 
 const playPause = () => {
-  if (!status.value) {
-    return
-  }
+  if (!status.value) return
 
-  if (playing) {
-    playPauseIcon.value = 'pause'
-    playPauseClass.value = 'pauseIcon'
+  if (playing.value) {
+    playbackStore.pauseAllPlayers()
   } else {
-    playPauseIcon.value = 'play_arrow'
-    playPauseClass.value = 'playIcon'
+    playbackStore.playAllPlayers()
   }
 }
 
-const playAllPlayers = () => {
-  playersState.playAll()
-}
+// Additionally, it's good to keep the reactive connection directly to the store's state:
+watch(
+  () => playbackStore.isAnyPlayerPlaying,
+  (currentPlayingState) => {
+    playing.value = currentPlayingState
+  }
+)
 
-const pauseAllPlayers = () => {
-  playersState.pauseAll()
-}
+const masterValue = ref(volumeStore.masterVolume * 100)
 
-// Set default value for the volume slider
-const vol = ref(20)
-
-const changeVol = () => {
-  const audio = audioRef.value
-  const volValue = vol.value / 100
-
-  audio.volume = volValue
-}
+watch(masterValue, (newVolume) => {
+  volumeStore.updateMasterVolume(newVolume)
+  // Update individual player volumes
+  for (const index in volumeStore.playerVolumes) {
+    const maxVol = volumeStore.playerMaxVolumes[index] || 0
+    const newPlayerVol = Math.min(maxVol, volumeStore.masterVolume) * 100
+    volumeStore.playerVolumes[index] = newPlayerVol / 100
+  }
+})
 </script>
 
 <style scoped>
@@ -108,11 +108,15 @@ const changeVol = () => {
   margin-right: 2rem;
 }
 
+.master-panel > h3.inactive {
+  color: var(--inactive);
+}
+
 .play-btn {
   border-radius: 50%;
   background-color: transparent;
-  width: 5.4rem;
-  height: 5.4rem;
+  width: 5.8rem;
+  height: 5.8rem;
   transition: background-color 0.1s ease-in-out;
   clip-path: circle(50%);
   margin-right: 2rem;
@@ -149,9 +153,9 @@ const changeVol = () => {
   background: transparent;
   border: 1px solid white;
   border-radius: 5px;
-  height: 0.6rem;
+  height: 0.7rem;
   cursor: pointer;
-  width: 13rem;
+  width: 16rem;
   transition: background-color 0.1s ease-in-out;
 }
 

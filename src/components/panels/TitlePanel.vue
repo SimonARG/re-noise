@@ -2,10 +2,10 @@
   <div class="title-container">
     <div class="title-panel flex-c f-al-cent">
       <h1 class="logo">Re;Noise</h1>
-      <h3 class="subtitle">your own ambient sound</h3>
-      <ul class="intro flex-c">
+      <h3 class="subtitle">Make your own ambient sound</h3>
+      <ul class="intro flex-c f-al-cent">
         <li>Press the top arrow to see the control panel</li>
-        <li>Press the right arrow to embed music</li>
+        <li>Press the right arrow to change settings</li>
         <li>Press the bottom arrow to see the master controls</li>
       </ul>
     </div>
@@ -18,8 +18,8 @@
   position: fixed;
   top: 50%;
   transform: translate(var(--translateX, 0), -50%);
-  min-width: 30vw;
-  width: 30svw;
+  min-width: fit-content;
+  width: fit-content;
   min-height: 90vh;
   height: 90svh;
   border-radius: 0px 20px 20px 0px;
@@ -39,12 +39,13 @@
 }
 
 .intro {
-  width: 90%;
+  list-style: none;
 }
 
 .intro li {
   font-size: 0.9rem;
   font-variation-settings: 'wdth' 87.5;
   margin-bottom: 0.4rem;
+  text-wrap: nowrap;
 }
 </style>

@@ -75,7 +75,7 @@ const audios = [
     icon: 'local_fire_department'
   },
   {
-    file: 'Camprife - Strong',
+    file: 'Campfire - Strong',
     name: 'Strong campfire',
     icon: 'local_fire_department'
   },

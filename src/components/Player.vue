@@ -9,7 +9,13 @@
       />
     </transition>
 
-    <audio :class="'audio-' + props.loopKey" ref="audioRef" :src="audioSrc" loop></audio>
+    <audio
+      :volume="adjustedVolume"
+      :class="'audio-' + props.loopKey"
+      ref="audioRef"
+      :src="audioSrc"
+      loop
+    ></audio>
 
     <div class="flex-c f-al-cent h-fit">
       <div @click="toggleSwitcher" class="switcher-arrow"></div>
@@ -42,11 +48,13 @@
 
       <div class="vol-container">
         <input
-          v-model="vol"
-          @input="changeVol"
+          :disabled="!status"
+          v-model="volValue"
           class="vol-slider"
           :class="{ thumbinactive: !status }"
           type="range"
+          min="0"
+          max="100"
         />
       </div>
     </div>
@@ -54,22 +62,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 
-import { playersState } from '../helpers/eventBus.js'
+import { statusStore } from '../stores/statusStore.js'
+import { playbackStore } from '../stores/playbackStore.js'
+import { volumeStore } from '../stores/volumeStore.js'
 import AudioSwitcher from './AudioSwitcher.vue'
 
 const props = defineProps({
-  controlClass: String,
-  audio: Object,
-  audios: Array,
-  loopKey: Number
+  controlClass: String, // Dynamically asign player class depending on loop index
+  audio: Object, // Get initial audio file
+  audios: Array, // Get full audio array for audio switcher and display
+  loopKey: Number // Get parent loop rendering index
 })
 
 // Set initial refs
 const audioSrc = ref(null)
-const status = ref(false)
-const playing = ref(false)
+const status = ref(false) // Player on or off
+const playing = ref(false) // Player playing or paused
 const currAudio = ref(props.audio)
 
 const audioPath = 'src/assets/audio/'
@@ -78,17 +88,19 @@ const fileExtension = '.opus'
 // Grab <audio> element from DOM
 const audioRef = ref(null)
 
-// Set default audio volume on page mount to 20%
-onMounted(() => {
-  const audio = audioRef.value
-  audio.volume = 0.2
-})
-
-// Set default value for the volume slider
-const vol = ref(20)
-
 const playPauseIcon = ref('play_arrow')
 const playPauseClass = ref('playIcon')
+
+// Check if any player is on in the status store and update accordingly
+const updateAnyPlayerOn = () => {
+  statusStore.isAnyPlayerOn = Object.values(statusStore.statuses).some((status) => status === true)
+}
+
+// Update "statuses" store object with player index
+const togglePlayerStatus = (status) => {
+  statusStore.statuses[props.loopKey] = status
+  updateAnyPlayerOn()
+}
 
 const togglePlayer = () => {
   status.value = !status.value
@@ -97,6 +109,7 @@ const togglePlayer = () => {
 
   if (audioSrc.value) {
     audioSrc.value = ''
+    volumeStore.deleteIndividualVolume(props.loopKey)
   } else {
     if (playing.value == true) {
       audioSrc.value = audioPath + currAudio.value.file + fileExtension
@@ -113,14 +126,9 @@ const togglePlayer = () => {
         audio.oncanplaythrough = null
       }
     }
+    volumeStore.updateIndividualVolume(volValue.value, props.loopKey)
   }
-
   togglePlayerStatus(status.value)
-}
-
-const togglePlayerStatus = (status) => {
-  playersState.statuses[props.loopKey] = status
-  updateAnyPlayerOn()
 }
 
 const playPause = () => {
@@ -134,19 +142,14 @@ const playPause = () => {
     playPauseIcon.value = 'pause'
     playPauseClass.value = 'pauseIcon'
     playing.value = true
+    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
   } else {
     audio.pause()
     playPauseIcon.value = 'play_arrow'
     playPauseClass.value = 'playIcon'
     playing.value = false
+    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
   }
-}
-
-const changeVol = () => {
-  const audio = audioRef.value
-  const volValue = vol.value / 100
-
-  audio.volume = volValue
 }
 
 const showSwitcher = ref(false)
@@ -176,12 +179,42 @@ const switchAudio = (audioFile) => {
   }
 }
 
-// Utility to check if any player is on
-const updateAnyPlayerOn = () => {
-  playersState.isAnyPlayerOn = Object.values(playersState.statuses).some(
-    (status) => status === true
-  )
-}
+const masterPlaying = computed(() => playbackStore.playing[props.loopKey] || false)
+
+// Watcher that reacts to changes in this player's playing status
+watch(masterPlaying, (newVal) => {
+  const audio = audioRef.value
+  if (newVal && audio.paused) {
+    audio
+      .play()
+      .then(() => {
+        // Handle successful playback if needed.
+        playPauseIcon.value = 'pause'
+        playPauseClass.value = 'pauseIcon'
+        playing.value = true
+      })
+      .catch((error) => {
+        // Handle playback error (e.g. user not interacted yet)
+        console.error('Playback failed:', error)
+      })
+  } else if (!newVal && !audio.paused) {
+    audio.pause()
+    playPauseIcon.value = 'play_arrow'
+    playPauseClass.value = 'playIcon'
+    playing.value = false
+  }
+})
+
+const volValue = ref(20)
+
+watch(volValue, (newVolume) => {
+  volumeStore.updateIndividualVolume(newVolume, props.loopKey)
+})
+
+const adjustedVolume = computed(() => {
+  const maxVol = volumeStore.playerMaxVolumes[props.loopKey] || 0
+  return (Math.min(maxVol, volumeStore.masterVolume) * volValue.value) / 100
+})
 </script>
 
 <style scoped>

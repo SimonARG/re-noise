@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-export const playersState = reactive({
+export const statusStore = reactive({
   statuses: {},
   isAnyPlayerOn: false
 })

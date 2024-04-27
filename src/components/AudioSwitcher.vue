@@ -38,15 +38,16 @@ const isActive = (audio) => {
   background-color: black;
   position: absolute;
   z-index: 12;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   left: 0;
   top: 0;
 }
 
 .switcher-container > span {
-  width: 36%;
+  width: 30%;
   text-align: center;
-  font-size: 4rem;
+  font-size: 2rem;
+  padding-left: 0.3rem;
 }
 
 .audio-switcher {
@@ -61,6 +62,7 @@ const isActive = (audio) => {
 
 .audio-switcher ul {
   overflow-y: scroll;
+  overflow-x: clip;
   border-radius: 10px;
   z-index: 10;
 }
@@ -115,5 +117,36 @@ const isActive = (audio) => {
 
 .audio-name {
   font-size: 0.86rem;
+  line-height: 0.9rem;
+}
+
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+@media only screen and (min-width: 480px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .switcher-container {
+    padding: 1rem;
+  }
+  .switcher-container > span {
+    width: 36%;
+    padding-left: 0;
+    font-size: 4rem;
+  }
+  .audio-name {
+    font-size: 0.86rem;
+    line-height: normal;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+@media only screen and (min-width: 1200px) {
 }
 </style>

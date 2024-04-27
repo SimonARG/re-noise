@@ -178,19 +178,17 @@ const activeAudios = ref(defaultAudios)
   left: 0;
   right: 0;
   border-radius: 0px 0px 20px 20px;
-  padding: 3.5rem 1rem 1rem 1rem;
+  padding: 3.5rem 0.7rem 0.7rem 0.7rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 .control-panel {
   border: 1px solid white;
+  border-bottom: none;
   border-radius: 0px 0px 12px 12px;
-  display: grid;
-  grid-template-areas:
-    'control-0 control-1 control-2'
-    'control-3 control-4 control-5'
-    'control-6 control-7 control-8';
+  display: flex;
+  flex-direction: column;
 }
 
 .control-0 {
@@ -229,9 +227,11 @@ const activeAudios = ref(defaultAudios)
   grid-area: control-8;
 }
 
-.control-panel > div {
-  position: relative;
-  padding: 1rem;
+.control-5,
+.control-6,
+.control-7,
+.control-8 {
+  display: none;
 }
 
 .control-0,
@@ -239,28 +239,104 @@ const activeAudios = ref(defaultAudios)
 .control-2,
 .control-3,
 .control-4,
-.control-5 {
+.control-5,
+.control-6,
+.control-7,
+.control-8 {
+  position: relative;
+  padding: 0.4rem;
   border-bottom: 1px solid white;
 }
 
-.control-0,
-.control-1,
-.control-3,
-.control-4,
-.control-6,
-.control-7 {
-  border-right: 1px solid white;
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+@media only screen and (min-width: 480px) {
+  .control-5 {
+    display: flex;
+  }
+  .control-panel {
+    display: grid;
+    grid-template-areas:
+      'control-0 control-1'
+      'control-2 control-3'
+      'control-4 control-5';
+  }
+  .control-0,
+  .control-2,
+  .control-4 {
+    border-right: 1px solid white;
+  }
 }
 
-.control-2,
-.control-5,
-.control-8 {
-  border-right: none;
+@media only screen and (min-width: 768px) {
+  .control-container {
+    padding: 3.5rem 1rem 1rem 1rem;
+  }
+  .control-panel > div {
+    padding: 1rem;
+  }
 }
 
-.control-6,
-.control-6,
-.control-8 {
-  border-bottom: none;
+@media only screen and (min-width: 992px) {
+  .control-panel {
+    grid-template-areas:
+      'control-0 control-1'
+      'control-2 control-3'
+      'control-4 control-5';
+  }
+  .control-0,
+  .control-2,
+  .control-4 {
+    border-right: 1px solid white;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .control-panel {
+    border: 1px solid white;
+    grid-template-areas:
+    'control-0 control-1 control-2'
+    'control-3 control-4 control-5'
+    'control-6 control-7 control-8';
+  }
+  .control-6,
+  .control-7,
+  .control-8 {
+    display: flex;
+  }
+
+  .control-0,
+  .control-1,
+  .control-2,
+  .control-3,
+  .control-4,
+  .control-5 {
+    border-bottom: 1px solid white;
+  }
+
+  .control-0,
+  .control-1,
+  .control-3,
+  .control-4,
+  .control-6,
+  .control-7 {
+    border-right: 1px solid white;
+  }
+
+  .control-2,
+  .control-5,
+  .control-8 {
+    border-right: none;
+  }
+
+  .control-6,
+  .control-7,
+  .control-8 {
+    border-bottom: none;
+  }
 }
 </style>

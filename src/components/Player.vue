@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <div class="flex-c h-fit f-al-end">
+    <div class="flex-c h-fit">
       <div class="flex-r f-al-cent">
         <button @click="togglePlayer" class="btn on-off-btn flex-c f-al-cent f-just-cent">
           <span class="material-symbols-rounded" :class="{ inactive: !status }">
@@ -257,8 +257,8 @@ const adjustedVolume = computed(() => {
 .play-btn {
   border-radius: 50%;
   background-color: transparent;
-  width: 5.4rem;
-  height: 5.4rem;
+  width: 3.6rem;
+  height: 3.6rem;
   transition: background-color 0.1s ease-in-out;
   clip-path: circle(50%);
 }
@@ -276,20 +276,20 @@ const adjustedVolume = computed(() => {
 }
 
 .pauseIcon {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .playIcon {
-  font-size: 5.5rem;
+  font-size: 3.5rem;
 }
 
 .on-off-btn {
   border-radius: 50%;
   background-color: transparent;
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 1.4rem;
+  height: 1.4rem;
   transition: background-color 0.1s ease-in-out;
-  margin-right: 0.8rem;
+  margin-right: 0.3rem;
 }
 
 .on-off-btn span.inactive {
@@ -297,7 +297,7 @@ const adjustedVolume = computed(() => {
 }
 
 .on-off-btn span {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-variation-settings:
     'FILL' 1,
     'wght' 400,
@@ -323,21 +323,22 @@ const adjustedVolume = computed(() => {
 
 .audio-display {
   border: 1px solid white;
-  width: 12rem;
-  height: 4rem;
+  width: 7.2rem;
+  height: 3.5rem;
   background-color: var(--panel-bg);
   border-radius: 10px;
+  padding: 0.2rem;
 }
 
 .audio-title {
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   text-align: center;
   width: 70%;
   max-height: 100%;
   user-select: none;
   line-height: 1.15rem;
   overflow: hidden;
-  word-break: break-word;
+  text-wrap: wrap;
 }
 
 .playIcon.inactive,
@@ -348,13 +349,12 @@ const adjustedVolume = computed(() => {
 }
 
 .audio-icon {
-  margin-left: 0.6rem;
+  margin-left: 0.3rem;
 }
 
 .vol-container {
   width: 100%;
-  margin-top: 1.3rem;
-  padding-left: 2rem;
+  margin-top: 0.7rem;
 }
 
 .vol-slider {
@@ -365,8 +365,9 @@ const adjustedVolume = computed(() => {
   border-radius: 5px;
   height: 0.6rem;
   cursor: pointer;
-  width: 100%;
+  width: 87%;
   transition: background-color 0.1s ease-in-out;
+  margin-left: 0.9rem;
 }
 
 .vol-slider:hover {
@@ -419,5 +420,65 @@ const adjustedVolume = computed(() => {
 .vol-slider::-moz-range-thumb:active {
   transform: scale(107%);
   cursor: grabbing;
+}
+
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+@media only screen and (min-width: 480px) {
+}
+
+@media only screen and (min-width: 768px) {
+  .play-btn {
+    width: 5.4rem;
+    height: 5.4rem;
+  }
+  .pauseIcon {
+    font-size: 4rem;
+  }
+
+  .playIcon {
+    font-size: 5.5rem;
+  }
+  .on-off-btn {
+    width: 1.9rem;
+    height: 1.9rem;
+    margin-right: 0.8rem;
+  }
+
+  .on-off-btn span {
+    font-size: 1.2rem;
+  }
+
+  .audio-display {
+    width: 12rem;
+    height: 4rem;
+    padding: 0;
+  }
+  .audio-title {
+    font-size: 0.95rem;
+  }
+  .audio-icon {
+    margin-left: 0.6rem;
+  }
+
+  .vol-container {
+    margin-top: 1.3rem;
+    padding-left: 2rem;
+  }
+
+  .vol-slider {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+@media only screen and (min-width: 1200px) {
 }
 </style>

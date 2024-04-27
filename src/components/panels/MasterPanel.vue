@@ -101,11 +101,12 @@ watch(masterValue, (newVolume) => {
 }
 
 .master-panel > h3 {
+  font-size: 0.9rem;
   writing-mode: vertical-lr;
   text-orientation: upright;
   letter-spacing: -5px;
   font-weight: bold;
-  margin-right: 2rem;
+  margin-right: 0.7rem;
 }
 
 .master-panel > h3.inactive {
@@ -115,11 +116,11 @@ watch(masterValue, (newVolume) => {
 .play-btn {
   border-radius: 50%;
   background-color: transparent;
-  width: 5.8rem;
-  height: 5.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
   transition: background-color 0.1s ease-in-out;
   clip-path: circle(50%);
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .play-btn:hover {
@@ -135,11 +136,11 @@ watch(masterValue, (newVolume) => {
 }
 
 .pauseIcon {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .playIcon {
-  font-size: 5.5rem;
+  font-size: 4.5rem;
 }
 
 .playIcon.inactive,
@@ -155,7 +156,7 @@ watch(masterValue, (newVolume) => {
   border-radius: 5px;
   height: 0.7rem;
   cursor: pointer;
-  width: 16rem;
+  width: 8.7rem;
   transition: background-color 0.1s ease-in-out;
 }
 
@@ -209,5 +210,41 @@ watch(masterValue, (newVolume) => {
 .vol-slider::-moz-range-thumb:active {
   transform: scale(107%);
   cursor: grabbing;
+}
+
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+@media only screen and (min-width: 480px) {
+  .master-panel > h3 {
+    font-size: 1rem;
+    margin-right: 2rem;
+  }
+  .play-btn {
+    width: 5.8rem;
+    height: 5.8rem;
+    margin-right: 2rem;
+  }
+  .pauseIcon {
+    font-size: 4rem;
+  }
+  .playIcon {
+    font-size: 5.5rem;
+  }
+  .vol-slider {
+    width: min(35vw, 16rem);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+@media only screen and (min-width: 1200px) {
 }
 </style>

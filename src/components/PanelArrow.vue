@@ -59,7 +59,7 @@ function emitToggleFlip() {
   clip-path: polygon(100% 0, 0 0, 50% 60%);
   margin: max(1vw, 10px) 0 0 0;
   transform-origin: center 26%;
-  left: 48.24%;
+  left: 44%;
 }
 
 .arrow.bot {
@@ -67,7 +67,7 @@ function emitToggleFlip() {
   margin: 0 0 max(1vw, 10px) 0;
   bottom: 0;
   transform-origin: center 74%;
-  left: 48.24%;
+  left: 44%;
 }
 
 .left.flip {
@@ -88,5 +88,39 @@ function emitToggleFlip() {
 .top.flip {
   transform: rotateX(180deg);
   transform-origin: center 26%;
+}
+
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+@media only screen and (min-width: 480px) {
+  .arrow.top,
+  .arrow.bot {
+    left: 46%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .arrow.top,
+  .arrow.bot {
+    left: 47%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .arrow.top,
+  .arrow.bot {
+    left: 47.3%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .arrow.top,
+  .arrow.bot {
+    left: 48.15%;
+  }
 }
 </style>

@@ -29,14 +29,6 @@ html {
   color: white;
 }
 
-.logo {
-  font-family: 'Kaushan Script', cursive;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4rem;
-  transition: 0.4s text-shadow;
-}
-
 .logo:hover {
   text-shadow: 0 0 7px white;
 }
@@ -200,28 +192,6 @@ section {
 
 /*
 |------------------------------------------------------------
-| Scrollbars
-|------------------------------------------------------------
-*/
-
-body::-webkit-scrollbar,
-select::-webkit-scrollbar {
-}
-
-body::-webkit-scrollbar-track {
-}
-
-body::-webkit-scrollbar-thumb {
-}
-
-select::-webkit-scrollbar-track {
-}
-
-select::-webkit-scrollbar-thumb {
-}
-
-/*
-|------------------------------------------------------------
 | Utilities
 |------------------------------------------------------------
 */
@@ -291,50 +261,26 @@ select::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-.fillable {
-  outline: none;
-  font-size: 1rem;
-  padding: 0.4rem 0.6rem;
-  background-color:;
-  border:;
-  box-shadow: inset 0px 0px 2px 1px;
-  color:;
-  margin-bottom:;
-}
-
-.fillable:-webkit-autofill {
-  outline: none !important;
-  font-size: 1rem !important;
-  padding: 0.4rem 0.6rem !important;
-  background-color: !important;
-  border: !important;
-  box-shadow: inset 0px 0px 2px 1px !important;
-  color: !important;
-  margin-bottom: !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: !important;
-  transition: background-color 5000s ease-in-out 0s !important;
-}
-
-.fillable:hover,
-.fillable:focus,
-.fillable:-webkit-autofill:hover,
-.fillable:-webkit-autofill:focus,
-.fillable:-webkit-autofill:active {
-  background-color:;
-}
-
-.fillable:-webkit-autofill:hover,
-.fillable:-webkit-autofill:focus,
-.fillable:-webkit-autofill:active {
-  background-color: !important;
-}
-
 .btn {
   cursor: pointer;
   outline: none;
   border: 1px solid white;
 }
+
+.side-panel {
+  width: 64vw;
+}
+
+/* body::before {
+  width: 1px;
+  content: '';
+  position: fixed;
+  left: 50%;
+  right: 0;
+  height: 100%;
+  background-color: red;
+  z-index: 9999;
+} */
 
 /*
 |------------------------------------------------------------
@@ -349,4 +295,180 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/*
+|------------------------------------------------------------
+| Media queries
+|------------------------------------------------------------
+*/
+
+/* @media only screen and (max-width: 600px) {
+  :root {
+      font-size: 12px;
+  }
+  .control-grid {
+      display: flex;
+      flex-direction: column;
+  }
+  .control4, .control5, .control6, .control7, .control8 {
+      display: none;
+  }
+  .menu-container, .music-container {
+      min-width: 88vw;
+      width: 88svw;
+      min-height: 80vh;
+      height: 80svh;
+  }
+  .arrow {
+      width: 4rem;
+      height: 4rem;
+  }
+  .top, .bot {
+      left: 44%;
+  }
+  .switcher-arrow {
+      width: 3.2rem;
+      height: 3.2rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  :root {
+      font-size: 13px;
+  }
+  .control-grid {
+      display: flex;
+      flex-direction: column;
+  }
+  .control5, .control6, .control7, .control8 {
+      display: none;
+  }
+  .menu-container, .music-container {
+      min-width: 65vw;
+      width: 65svw;
+      min-height: 90vh;
+      height: 90svh;
+  }
+  .arrow {
+      width: 3rem;
+      height: 3rem;
+  }
+  .top, .bot {
+      left: 47.97%;
+  }
+  .switcher-arrow {
+      width: 3.2rem;
+      height: 3.2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+      font-size: 14px;
+  }
+  .control-grid {
+      display: grid;
+      grid-template-areas: 
+          "control0 control1"
+          "control2 control3"
+          "control4 control5";
+  }
+  .control5 {
+      display: grid;
+  }
+  .control6, .control7, .control8 {
+      display: none;
+  }
+  .menu-container, .music-container {
+      min-width: 50vw;
+      width: 50svw;
+      min-height: 90vh;
+      height: 90svh;
+  }
+  .arrow {
+      width: 3rem;
+      height: 3rem;
+  }
+  .top, .bot {
+      left: 47.97%;
+  }
+  .switcher-arrow {
+      width: 2.3rem;
+      height: 2.3rem;
+  }
+}
+
+@media only screen and (min-width: 1158px) {
+  :root {
+      font-size: 15px;
+  }
+  .control-grid {
+      display: grid;
+      grid-template-areas: 
+          "control0 control1 control2"
+          "control3 control4 control5"
+          "control6 control7 control8";
+  }
+  .control5, .control6, .control7, .control8 {
+      display: grid;
+  }
+  .menu-container, .music-container {
+      min-width: 30vw;
+      width: 30svw;
+      min-height: 90vh;
+      height: 90svh;
+  }
+  .arrow {
+      width: 3rem;
+      height: 3rem;
+  }
+  .top, .bot {
+      left: 47.97%;
+  }
+  .switcher-arrow {
+      width: 2.3rem;
+      height: 2.3rem;
+  }
+}
+
+@media only screen and (min-width: 1303px) {
+  :root {
+      font-size: 16px;
+  }
+  .arrow {
+      width: 3rem;
+      height: 3rem;
+  }
+  .top, .bot {
+      left: 47.97%;
+  }
+  .switcher-arrow {
+      width: 2.3rem;
+      height: 2.3rem;
+  }
+} */
+
+@media only screen and (min-width: 480px) {
+  :root {
+    font-size: 17px;
+  }
+  .side-panel {
+    width: 75vw;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .side-panel {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .side-panel {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
 }

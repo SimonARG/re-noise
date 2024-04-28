@@ -103,11 +103,10 @@ const togglePlayerStatus = (status) => {
 }
 
 const togglePlayer = () => {
-  status.value = !status.value
 
   const audio = audioRef.value
 
-  if (statusStore.statuses[props.loopKey] == false) {
+  if (status.value) {
     audioSrc.value = ''
     volumeStore.deleteIndividualVolume(props.loopKey)
   } else {
@@ -129,6 +128,8 @@ const togglePlayer = () => {
     }
     volumeStore.updateIndividualVolume(volValue.value, props.loopKey)
   }
+
+  status.value = !status.value
   togglePlayerStatus(status.value)
 }
 

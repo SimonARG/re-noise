@@ -133,7 +133,7 @@ const isActive = (audio) => {
   .switcher-container > span {
     width: 36%;
     padding-left: 0;
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
   .audio-name {
     font-size: 0.86rem;

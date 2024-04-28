@@ -62,9 +62,6 @@
 |------------------------------------------------------------
 */
 
-@media only screen and (min-width: 480px) {
-}
-
 @media only screen and (min-width: 768px) {
   .logo {
     font-size: 4rem;
@@ -72,11 +69,5 @@
   .intro li {
     text-wrap: nowrap;
   }
-}
-
-@media only screen and (min-width: 992px) {
-}
-
-@media only screen and (min-width: 1200px) {
 }
 </style>

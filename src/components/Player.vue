@@ -429,9 +429,6 @@ const adjustedVolume = computed(() => {
 |------------------------------------------------------------
 */
 
-@media only screen and (min-width: 480px) {
-}
-
 @media only screen and (min-width: 768px) {
   .play-btn {
     width: 5.4rem;
@@ -475,11 +472,5 @@ const adjustedVolume = computed(() => {
     width: 100%;
     margin-left: 0;
   }
-}
-
-@media only screen and (min-width: 992px) {
-}
-
-@media only screen and (min-width: 1200px) {
 }
 </style>

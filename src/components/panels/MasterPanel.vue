@@ -238,13 +238,4 @@ watch(masterValue, (newVolume) => {
     width: min(35vw, 16rem);
   }
 }
-
-@media only screen and (min-width: 768px) {
-}
-
-@media only screen and (min-width: 992px) {
-}
-
-@media only screen and (min-width: 1200px) {
-}
 </style>

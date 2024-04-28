@@ -126,9 +126,6 @@ const isActive = (audio) => {
 |------------------------------------------------------------
 */
 
-@media only screen and (min-width: 480px) {
-}
-
 @media only screen and (min-width: 768px) {
   .switcher-container {
     padding: 1rem;
@@ -142,11 +139,5 @@ const isActive = (audio) => {
     font-size: 0.86rem;
     line-height: normal;
   }
-}
-
-@media only screen and (min-width: 992px) {
-}
-
-@media only screen and (min-width: 1200px) {
 }
 </style>

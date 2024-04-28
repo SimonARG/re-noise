@@ -107,7 +107,7 @@ const togglePlayer = () => {
 
   const audio = audioRef.value
 
-  if (audioSrc.value) {
+  if (statusStore.statuses[props.loopKey] == false) {
     audioSrc.value = ''
     volumeStore.deleteIndividualVolume(props.loopKey)
   } else {
@@ -125,6 +125,7 @@ const togglePlayer = () => {
         audio.pause()
         audio.oncanplaythrough = null
       }
+      playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
     }
     volumeStore.updateIndividualVolume(volValue.value, props.loopKey)
   }

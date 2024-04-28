@@ -299,9 +299,9 @@ const activeAudios = ref(defaultAudios)
   .control-panel {
     border: 1px solid white;
     grid-template-areas:
-    'control-0 control-1 control-2'
-    'control-3 control-4 control-5'
-    'control-6 control-7 control-8';
+      'control-0 control-1 control-2'
+      'control-3 control-4 control-5'
+      'control-6 control-7 control-8';
   }
   .control-6,
   .control-7,

@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-const basePath = import.meta.env.PROD ? '/re-noise/' : '/';
+const basePath = import.meta.env.PROD ? '/re-noise/' : '/'
 
 // Is there's no default wallpaper in local storage, set it
 if (!localStorage.getItem('defaultBg')) {
@@ -12,24 +12,26 @@ if (!localStorage.getItem('bgMode')) {
   localStorage.setItem('bgMode', JSON.stringify('internal'))
 }
 
-// Is there's no wallpaper array in local storage, set it
-if (!localStorage.getItem('bgArr')) {
-  localStorage.setItem(
-    'bgArr',
-    JSON.stringify([
-      `${basePath}imgs/bg1.gif`,
-      `${basePath}imgs/bg2.jpg`,
-      `${basePath}imgs/bg3.gif`,
-      `${basePath}imgs/bg4.gif`,
-      `${basePath}imgs/bg5.jfif`,
-      `${basePath}imgs/bg6.jfif`,
-      `${basePath}imgs/bg7.gif`,
-      `${basePath}imgs/bg8.gif`,
-      `${basePath}imgs/bg9.jpg`,
-      `${basePath}imgs/bg10.jpg`,
-      `${basePath}imgs/bg11.gif`
-    ])
-  )
+const bgArray = [
+  `${basePath}imgs/bg1.gif`,
+  `${basePath}imgs/bg2.avif`,
+  `${basePath}imgs/bg3.jpg`,
+  `${basePath}imgs/bg4.gif`,
+  `${basePath}imgs/bg5.avif`,
+  `${basePath}imgs/bg6.avif`,
+  `${basePath}imgs/bg7.avif`,
+  `${basePath}imgs/bg8.avif`,
+  `${basePath}imgs/bg9.avif`,
+  `${basePath}imgs/bg10.avif`,
+  `${basePath}imgs/bg11.avif`
+]
+
+// Is there's no wallpaper array in local storage or it's outdated, set it
+if (
+  !localStorage.getItem('bgArr') ||
+  !JSON.parse(localStorage.getItem('bgArr')).contains(bgArray)
+) {
+  localStorage.setItem('bgArr', JSON.stringify(bgArray))
 }
 
 // Is there's no bgArrIndex in local storage, set it

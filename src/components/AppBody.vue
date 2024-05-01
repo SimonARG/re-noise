@@ -1,43 +1,44 @@
 <template>
-  <PanelArrow
-    position="left"
-    @click="togglePanel('title')"
-    :isFlipped="titleFlipped"
-    @toggle-flip="toggleFlip('title')"
-  />
-  <transition name="slideRight">
-    <TitlePanel v-show="titleShow" />
-  </transition>
+    <PanelArrow
+      position="left"
+      @click="togglePanel('title')"
+      :isFlipped="titleFlipped"
+      @toggle-flip="toggleFlip('title')"
+    />
+    <transition name="slideRight">
+      <TitlePanel v-show="titleShow" />
+    </transition>
 
-  <PanelArrow
-    position="top"
-    @click="togglePanel('control')"
-    :isFlipped="controlFlipped"
-    @toggle-flip="toggleFlip('control')"
-  />
-  <transition name="slideDown">
-    <ControlPanel v-show="controlShow" />
-  </transition>
+    <PanelArrow
+      position="top"
+      @click="togglePanel('control')"
+      :isFlipped="controlFlipped"
+      @toggle-flip="toggleFlip('control')"
+    />
+    <transition name="slideDown">
+      <ControlPanel v-show="controlShow" />
+    </transition>
 
-  <PanelArrow
-    position="bot"
-    @click="togglePanel('master')"
-    :isFlipped="masterFlipped"
-    @toggle-flip="toggleFlip('master')"
-  />
-  <transition name="slideUp">
-    <MasterPanel v-show="masterShow" />
-  </transition>
+    <PanelArrow
+      position="bot"
+      @click="togglePanel('master')"
+      :isFlipped="masterFlipped"
+      @toggle-flip="toggleFlip('master')"
+    />
+    <transition name="slideUp">
+      <MasterPanel v-show="masterShow" />
+    </transition>
 
-  <PanelArrow
-    position="right"
-    @click="togglePanel('config')"
-    :isFlipped="configFlipped"
-    @toggle-flip="toggleFlip('config')"
-  />
-  <transition name="slideLeft">
-    <ConfigPanel v-show="configShow" />
-  </transition>
+    <PanelArrow
+      position="right"
+      @click="togglePanel('config')"
+      :isFlipped="configFlipped"
+      @toggle-flip="toggleFlip('config')"
+    />
+    <transition name="slideLeft">
+      <ConfigPanel v-show="configShow" />
+    </transition>
+    <div class="bg"></div>
 </template>
 
 <script setup>
@@ -118,6 +119,20 @@ function togglePanel(panelName) {
       break
   }
 }
+
+const bgs = {
+  1: '../assets/imgs/bg1.gif',
+  2: '../assets/imgs/bg2.jpg',
+  3: '../assets/imgs/bg3.gif',
+  4: '../assets/imgs/bg4.gif',
+  5: '../assets/imgs/bg5.jfif',
+  6: '../assets/imgs/bg6.jfif',
+  7: '../assets/imgs/bg7.gif',
+  8: '../assets/imgs/bg8.gif',
+  9: '../assets/imgs/bg9.jpg',
+  10: '../assets/imgs/bg10.jpg',
+  11: '../assets/imgs/bg11.gif'
+}
 </script>
 
 <style scoped>
@@ -179,5 +194,14 @@ function togglePanel(panelName) {
 .slideLeft-enter-active,
 .slideLeft-leave-active {
   transition: transform 0.2s ease-in-out;
+}
+
+.bg {
+  min-height: 100vh;
+  height: 100svh;
+  background-image: url('../assets/imgs/bg1.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 </style>

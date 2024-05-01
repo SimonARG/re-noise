@@ -103,7 +103,6 @@ const togglePlayerStatus = (status) => {
 }
 
 const togglePlayer = () => {
-
   const audio = audioRef.value
 
   if (status.value) {

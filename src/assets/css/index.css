@@ -16,7 +16,7 @@
 |------------------------------------------------------------
 */
 
-html {
+html, input {
   font-family: 'Noto Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -271,183 +271,11 @@ section {
   width: 64vw;
 }
 
-/* body::before {
-  width: 1px;
-  content: '';
-  position: fixed;
-  left: 50%;
-  right: 0;
-  height: 100%;
-  background-color: red;
-  z-index: 9999;
-} */
-
-/*
-|------------------------------------------------------------
-| Body
-|------------------------------------------------------------
-*/
-
-body {
-  min-height: 100vh;
-  height: 100svh;
-  background-image: url('../imgs/bg.gif');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
 /*
 |------------------------------------------------------------
 | Media queries
 |------------------------------------------------------------
 */
-
-/* @media only screen and (max-width: 600px) {
-  :root {
-      font-size: 12px;
-  }
-  .control-grid {
-      display: flex;
-      flex-direction: column;
-  }
-  .control4, .control5, .control6, .control7, .control8 {
-      display: none;
-  }
-  .menu-container, .music-container {
-      min-width: 88vw;
-      width: 88svw;
-      min-height: 80vh;
-      height: 80svh;
-  }
-  .arrow {
-      width: 4rem;
-      height: 4rem;
-  }
-  .top, .bot {
-      left: 44%;
-  }
-  .switcher-arrow {
-      width: 3.2rem;
-      height: 3.2rem;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  :root {
-      font-size: 13px;
-  }
-  .control-grid {
-      display: flex;
-      flex-direction: column;
-  }
-  .control5, .control6, .control7, .control8 {
-      display: none;
-  }
-  .menu-container, .music-container {
-      min-width: 65vw;
-      width: 65svw;
-      min-height: 90vh;
-      height: 90svh;
-  }
-  .arrow {
-      width: 3rem;
-      height: 3rem;
-  }
-  .top, .bot {
-      left: 47.97%;
-  }
-  .switcher-arrow {
-      width: 3.2rem;
-      height: 3.2rem;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  :root {
-      font-size: 14px;
-  }
-  .control-grid {
-      display: grid;
-      grid-template-areas: 
-          "control0 control1"
-          "control2 control3"
-          "control4 control5";
-  }
-  .control5 {
-      display: grid;
-  }
-  .control6, .control7, .control8 {
-      display: none;
-  }
-  .menu-container, .music-container {
-      min-width: 50vw;
-      width: 50svw;
-      min-height: 90vh;
-      height: 90svh;
-  }
-  .arrow {
-      width: 3rem;
-      height: 3rem;
-  }
-  .top, .bot {
-      left: 47.97%;
-  }
-  .switcher-arrow {
-      width: 2.3rem;
-      height: 2.3rem;
-  }
-}
-
-@media only screen and (min-width: 1158px) {
-  :root {
-      font-size: 15px;
-  }
-  .control-grid {
-      display: grid;
-      grid-template-areas: 
-          "control0 control1 control2"
-          "control3 control4 control5"
-          "control6 control7 control8";
-  }
-  .control5, .control6, .control7, .control8 {
-      display: grid;
-  }
-  .menu-container, .music-container {
-      min-width: 30vw;
-      width: 30svw;
-      min-height: 90vh;
-      height: 90svh;
-  }
-  .arrow {
-      width: 3rem;
-      height: 3rem;
-  }
-  .top, .bot {
-      left: 47.97%;
-  }
-  .switcher-arrow {
-      width: 2.3rem;
-      height: 2.3rem;
-  }
-}
-
-@media only screen and (min-width: 1303px) {
-  :root {
-      font-size: 16px;
-  }
-  .arrow {
-      width: 3rem;
-      height: 3rem;
-  }
-  .top, .bot {
-      left: 47.97%;
-  }
-  .switcher-arrow {
-      width: 2.3rem;
-      height: 2.3rem;
-  }
-} */
 
 @media only screen and (min-width: 480px) {
   :root {
@@ -468,7 +296,4 @@ body {
   .side-panel {
     width: 100%;
   }
-}
-
-@media only screen and (min-width: 1200px) {
 }

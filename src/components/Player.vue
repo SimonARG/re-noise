@@ -113,9 +113,9 @@ const togglePlayer = () => {
     if (playing.value == true) {
       audioSrc.value = audioPath + currAudio.value.file + fileExtension
       audio.load()
-      audio.oncanplaythrough = () => {
+      audio.oncanplay = () => {
         audio.play()
-        audio.oncanplaythrough = null
+        audio.oncanplay = null
       }
     } else if (playing.value == false) {
       audioSrc.value = audioPath + currAudio.value.file + fileExtension
@@ -140,14 +140,14 @@ const playPause = () => {
   const audio = audioRef.value
 
   if (audio.paused) {
-    audio.oncanplaythrough = () => {
-        audio.play()
-        audio.oncanplaythrough = null
-        playing.value = true
-      playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
-      playPauseIcon.value = 'pause'
-      playPauseClass.value = 'pauseIcon'
+    audio.onloadeddata = () => {
+      audio.play()
+      audio.onloadeddata = null
     }
+    playing.value = true
+    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
+    playPauseIcon.value = 'pause'
+    playPauseClass.value = 'pauseIcon'
   } else {
     audio.pause()
     playPauseIcon.value = 'play_arrow'

@@ -120,10 +120,6 @@ const togglePlayer = () => {
     } else if (playing.value == false) {
       audioSrc.value = audioPath + currAudio.value.file + fileExtension
       audio.load()
-      audio.oncanplay = () => {
-        audio.pause()
-        audio.oncanplay = null
-      }
       playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
     }
     volumeStore.updateIndividualVolume(volValue.value, props.loopKey)
@@ -140,14 +136,11 @@ const playPause = () => {
   const audio = audioRef.value
 
   if (audio.paused) {
-    audio.oncanplay = () => {
-      audio.play()
-      audio.oncanplay = null
-    }
-    playing.value = true
-    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
+    audio.play()
     playPauseIcon.value = 'pause'
     playPauseClass.value = 'pauseIcon'
+    playing.value = true
+    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
   } else {
     audio.pause()
     playPauseIcon.value = 'play_arrow'
@@ -170,16 +163,16 @@ const switchAudio = (audioFile) => {
   if (playing.value == true) {
     audioSrc.value = audioPath + audioFile.file + fileExtension
     audio.load()
-    audio.oncanplaythrough = () => {
+    audio.oncanplay = () => {
       audio.play()
-      audio.oncanplaythrough = null
+      audio.oncanplay = null
     }
   } else if (playing.value == false) {
     audioSrc.value = audioPath + audioFile.file + fileExtension
     audio.load()
-    audio.oncanplaythrough = () => {
+    audio.oncanplay = () => {
       audio.pause()
-      audio.oncanplaythrough = null
+      audio.oncanplay = null
     }
   }
 }

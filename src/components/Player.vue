@@ -140,11 +140,14 @@ const playPause = () => {
   const audio = audioRef.value
 
   if (audio.paused) {
-    audio.play()
-    playPauseIcon.value = 'pause'
-    playPauseClass.value = 'pauseIcon'
-    playing.value = true
-    playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
+    audio.oncanplaythrough = () => {
+        audio.play()
+        audio.oncanplaythrough = null
+        playing.value = true
+      playbackStore.togglePlayerPlaying(playing.value, props.loopKey)
+      playPauseIcon.value = 'pause'
+      playPauseClass.value = 'pauseIcon'
+    }
   } else {
     audio.pause()
     playPauseIcon.value = 'play_arrow'

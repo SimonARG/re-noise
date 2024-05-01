@@ -16,7 +16,9 @@
 |------------------------------------------------------------
 */
 
-html, input {
+html,
+input,
+button {
   font-family: 'Noto Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;

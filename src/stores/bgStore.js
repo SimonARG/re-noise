@@ -29,7 +29,7 @@ const bgArray = [
 // Is there's no wallpaper array in local storage or it's outdated, set it
 if (
   !localStorage.getItem('bgArr') ||
-  !JSON.parse(localStorage.getItem('bgArr')).contains(bgArray)
+  !JSON.parse(localStorage.getItem('bgArr')).includes(bgArray)
 ) {
   localStorage.setItem('bgArr', JSON.stringify(bgArray))
 }

@@ -1,8 +1,10 @@
 import { reactive } from 'vue'
 
+const basePath = import.meta.env.PROD ? '/re-noise/' : '/';
+
 // Is there's no default wallpaper in local storage, set it
 if (!localStorage.getItem('defaultBg')) {
-  localStorage.setItem('defaultBg', JSON.stringify('src/assets/imgs/bg1.gif'))
+  localStorage.setItem('defaultBg', JSON.stringify(`${basePath}imgs/bg1.gif`))
 }
 
 // Is there's no bgMode in local storage, set it
@@ -15,17 +17,17 @@ if (!localStorage.getItem('bgArr')) {
   localStorage.setItem(
     'bgArr',
     JSON.stringify([
-      'src/assets/imgs/bg1.gif',
-      'src/assets/imgs/bg2.jpg',
-      'src/assets/imgs/bg3.gif',
-      'src/assets/imgs/bg4.gif',
-      'src/assets/imgs/bg5.jfif',
-      'src/assets/imgs/bg6.jfif',
-      'src/assets/imgs/bg7.gif',
-      'src/assets/imgs/bg8.gif',
-      'src/assets/imgs/bg9.jpg',
-      'src/assets/imgs/bg10.jpg',
-      'src/assets/imgs/bg11.gif'
+      `${basePath}imgs/bg1.gif`,
+      `${basePath}imgs/bg2.jpg`,
+      `${basePath}imgs/bg3.gif`,
+      `${basePath}imgs/bg4.gif`,
+      `${basePath}imgs/bg5.jfif`,
+      `${basePath}imgs/bg6.jfif`,
+      `${basePath}imgs/bg7.gif`,
+      `${basePath}imgs/bg8.gif`,
+      `${basePath}imgs/bg9.jpg`,
+      `${basePath}imgs/bg10.jpg`,
+      `${basePath}imgs/bg11.gif`
     ])
   )
 }

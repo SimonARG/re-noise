@@ -82,7 +82,8 @@ const status = ref(false) // Player on or off
 const playing = ref(false) // Player playing or paused
 const currAudio = ref(props.audio)
 
-const audioPath = 'src/assets/audio/'
+const basePath = import.meta.env.PROD ? '/re-noise/' : '/';
+const audioPath = `${basePath}audio/`
 const fileExtension = '.opus'
 
 // Grab <audio> element from DOM

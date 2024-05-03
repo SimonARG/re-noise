@@ -14,6 +14,6 @@ export default defineConfig({
     }
   },
   base: process.env.NODE_ENV === 'production'
-  ? '/re-noise/' // Replace with your repository name
+  ? '/' // Replace with your repository name
   : '/',
 })

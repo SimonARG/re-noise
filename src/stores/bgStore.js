@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-const basePath = import.meta.env.PROD ? '/re-noise/' : '/'
+const basePath = import.meta.env.PROD ? '/' : '/'
 
 // Is there's no default wallpaper in local storage, set it
 if (!localStorage.getItem('defaultBg')) {
